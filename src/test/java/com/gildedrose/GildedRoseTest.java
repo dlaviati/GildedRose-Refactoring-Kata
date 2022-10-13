@@ -15,11 +15,14 @@ class GildedRoseTest {
   private static Object[][] dataProvider_allValuesTest() {
     return new Object[][] {
         {new NormalItem((RANDOM_NAME_1)).withSellInValue(10).withQuality(1), 9, 0},
+        {new ConjuredItem((RANDOM_NAME_1)).withSellInValue(10).withQuality(1), 9, 0},
         {new AgedBrie(AGED_BRIE_NAME){}.withSellInValue(2).withQuality(0), 1, 1},
         {new NormalItem((RANDOM_NAME_2)).withSellInValue(5).withQuality(7), 4, 6},
+        {new ConjuredItem((RANDOM_NAME_2)).withSellInValue(5).withQuality(7), 4, 5},
         {new Sulfuras(SULFURAS_ITEM_NAME){}.withSellInValue(0).withQuality(80), 0, 80},
         {new Sulfuras(SULFURAS_ITEM_NAME){}.withSellInValue(-1).withQuality(80), -1, 80},
         {new NormalItem((RANDOM_NAME_3)).withSellInValue(-1).withQuality(80), -2, 78},
+        {new ConjuredItem((RANDOM_NAME_3)).withSellInValue(-1).withQuality(80), -2, 76},
         {new AgedBrie(AGED_BRIE_NAME){}.withSellInValue(-1).withQuality(48), -2, 50},
         {new BackstageTicket(BACKSTAGE_PASS_TICKET_ITEM_NAME).withSellInValue(-1).withQuality(50), -2, 0},
         {new BackstageTicket(BACKSTAGE_PASS_TICKET_ITEM_NAME).withSellInValue(15).withQuality(20), 14, 21},
@@ -35,7 +38,9 @@ class GildedRoseTest {
         {new BackstageTicket(BACKSTAGE_PASS_TICKET_ITEM_NAME).withSellInValue(5).withQuality(49), 4, 50},
         {new BackstageTicket(BACKSTAGE_PASS_TICKET_ITEM_NAME).withSellInValue(1).withQuality(50), 0, 50},
         {new NormalItem((RANDOM_NAME_3)).withSellInValue(-1).withQuality(0), -2, 0},
+        {new ConjuredItem((RANDOM_NAME_3)).withSellInValue(-1).withQuality(0), -2, 0},
         {new NormalItem((RANDOM_NAME_3)).withSellInValue(-1).withQuality(2), -2, 0},
+        {new ConjuredItem((RANDOM_NAME_3)).withSellInValue(-1).withQuality(4), -2, 0},
         {new AgedBrie(AGED_BRIE_NAME){}.withSellInValue(-1).withQuality(49), -2, 50},
 
     };

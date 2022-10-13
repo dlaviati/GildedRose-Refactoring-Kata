@@ -31,6 +31,8 @@ class ItemFactoryTest {
         Constants.BACKSTAGE_PASS_TICKET_ITEM_NAME, BackstageTicket.class
     }, {
         Constants.SULFURAS_ITEM_NAME, Sulfuras.class
+    }, {
+        Constants.CONJURED_ITEM_PREFIX, ConjuredItem.class
     }
     };
   }
