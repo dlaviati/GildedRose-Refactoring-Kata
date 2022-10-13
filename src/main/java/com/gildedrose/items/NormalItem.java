@@ -8,14 +8,18 @@ public class NormalItem extends Item {
 
   @Override
   public void runDailyUpdate() {
-    if (quality > 0) {
-      decreaseQualityByOne();
+    decreaseDailySellIn();
+
+    decrementQualityIfGreaterThan0();
+
+    if (isSellDatePassed()) {
+      decrementQualityIfGreaterThan0();
     }
+  }
 
-    decreaseSellInByOne();
-
-    if (sellIn < 0 && quality > 0) {
-      decreaseQualityByOne();
+  private void decrementQualityIfGreaterThan0() {
+    if (quality > 0) {
+      this.quality--;
     }
   }
 }

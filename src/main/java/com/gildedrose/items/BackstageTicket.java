@@ -8,23 +8,23 @@ public class BackstageTicket extends Item {
 
   @Override
   public void runDailyUpdate() {
-    if (quality < 50) {
-      increaseQualityByOne();
+    decreaseDailySellIn();
 
-      if (sellIn < 11 && quality < 50) {
-        increaseQualityByOne();
-      }
-
-      if (sellIn < 6 && quality < 50) {
-        increaseQualityByOne();
-      }
-    }
-
-    decreaseSellInByOne();
-
-    if (sellIn < 0) {
+    if (isSellDatePassed()) {
       zeroQuality();
+      return;
     }
 
+    increaseQualityIfLessThan50By(getMaxNumberToIncreaseQualityBy());
+  }
+
+  private int getMaxNumberToIncreaseQualityBy() {
+    if (sellIn < 5) {
+      return 3;
+    }
+    if (sellIn < 10) {
+      return 2;
+    }
+    return 1;
   }
 }

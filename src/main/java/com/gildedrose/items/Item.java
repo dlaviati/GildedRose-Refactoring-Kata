@@ -28,7 +28,7 @@ public abstract class Item {
   public abstract void runDailyUpdate();
 
 
-  void decreaseSellInByOne() {
+  void decreaseDailySellIn() {
     this.sellIn--;
   }
 
@@ -36,11 +36,11 @@ public abstract class Item {
     this.quality = 0;
   }
 
-  void decreaseQualityByOne() {
-    this.quality--;
+  protected boolean isSellDatePassed() {
+    return sellIn < 0;
   }
 
-  void increaseQualityByOne() {
-    this.quality++;
+  protected void increaseQualityIfLessThan50By(int value) {
+    this.quality = Math.min(50, quality + value);
   }
 }

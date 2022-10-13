@@ -8,14 +8,12 @@ public class AgedBrie extends Item {
 
   @Override
   public void runDailyUpdate() {
-    if (quality < 50) {
-      increaseQualityByOne();
-    }
+    decreaseDailySellIn();
 
-    decreaseSellInByOne();
+    increaseQualityIfLessThan50By(1);
 
-    if (sellIn < 0 && quality < 50) {
-      increaseQualityByOne();
+    if (isSellDatePassed()) {
+      increaseQualityIfLessThan50By(1);
     }
   }
 }
