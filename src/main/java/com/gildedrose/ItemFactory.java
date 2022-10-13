@@ -1,11 +1,21 @@
 package com.gildedrose;
 
-import com.gildedrose.items.Item;
+import com.gildedrose.items.*;
+
+import static com.gildedrose.Constants.*;
 
 public class ItemFactory {
 
-  // TODO: implement!
   public Item createItemByName(String itemName) {
-    throw new IllegalArgumentException("implement me");
+    if (itemName == null) {
+      throw new IllegalArgumentException("Blank item name");
+    }
+
+    return switch (itemName) {
+      case BACKSTAGE_PASS_TICKET_ITEM_NAME -> new BackstageTicket(itemName);
+      case SULFURAS_ITEM_NAME -> new Sulfuras(itemName);
+      case AGED_BRIE_NAME -> new AgedBrie(itemName);
+      default -> new NormalItem(itemName);
+    };
   }
 }

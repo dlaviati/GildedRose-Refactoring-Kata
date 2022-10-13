@@ -4,10 +4,9 @@ import com.gildedrose.items.Item;
 
 import java.util.Set;
 
+import static com.gildedrose.Constants.*;
+
 class GildedRose {
-  private static final String BACKSTAGE_PASS_TICKET_ITEM_NAME = "Backstage passes to a TAFKAL80ETC concert";
-  private static final String SULFURAS_ITEM_NAME = "Sulfuras, Hand of Ragnaros";
-  private static final String AGED_BRIE_NAME = "Aged Brie";
 
   Item[] items;
 

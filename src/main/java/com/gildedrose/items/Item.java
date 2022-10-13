@@ -12,6 +12,10 @@ public abstract class Item {
     this.quality = quality;
   }
 
+  public Item(String name) {
+    this.name = name;
+  }
+
   @Override
   public String toString() {
     return this.name + ", " + this.sellIn + ", " + this.quality;
