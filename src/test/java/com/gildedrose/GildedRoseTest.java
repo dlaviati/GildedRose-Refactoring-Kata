@@ -1,38 +1,42 @@
 package com.gildedrose;
 
-import com.gildedrose.items.Item;
+import com.gildedrose.items.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import static com.gildedrose.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class GildedRoseTest {
+  private static final String RANDOM_NAME_1 = "+5 Dexterity Vest";
+  private static final String RANDOM_NAME_2 = "Elixir of the Mongoose";
+  private static final String RANDOM_NAME_3 = "Leather Armour";
 
   private static Object[][] dataProvider_allValuesTest() {
     return new Object[][] {
-        {new Item("+5 Dexterity Vest", 10, 1){}, 9, 0},
-        {new Item("Aged Brie", 2, 0){}, 1, 1},
-        {new Item("Elixir of the Mongoose", 5, 7){}, 4, 6},
-        {new Item("Sulfuras, Hand of Ragnaros", 0, 80){}, 0, 80},
-        {new Item("Sulfuras, Hand of Ragnaros", -1, 80){}, -1, 80},
-        {new Item("Leather Armour", -1, 80){}, -2, 78},
-        {new Item("Aged Brie", -1, 48){}, -2, 50},
-        {new Item("Backstage passes to a TAFKAL80ETC concert", -1, 80){}, -2, 0},
-        {new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20){}, 14, 21},
-        {new Item("Backstage passes to a TAFKAL80ETC concert", 10, 48){}, 9, 50},
-        {new Item("Backstage passes to a TAFKAL80ETC concert", 5, 47){}, 4, 50},
+        {new NormalItem((RANDOM_NAME_1)).withSellInValue(10).withQuality(1), 9, 0},
+        {new AgedBrie(AGED_BRIE_NAME){}.withSellInValue(2).withQuality(0), 1, 1},
+        {new NormalItem((RANDOM_NAME_2)).withSellInValue(5).withQuality(7), 4, 6},
+        {new Sulfuras(SULFURAS_ITEM_NAME){}.withSellInValue(0).withQuality(80), 0, 80},
+        {new Sulfuras(SULFURAS_ITEM_NAME){}.withSellInValue(-1).withQuality(80), -1, 80},
+        {new NormalItem((RANDOM_NAME_3)).withSellInValue(-1).withQuality(80), -2, 78},
+        {new AgedBrie(AGED_BRIE_NAME){}.withSellInValue(-1).withQuality(48), -2, 50},
+        {new BackstageTicket(BACKSTAGE_PASS_TICKET_ITEM_NAME).withSellInValue(-1).withQuality(80), -2, 0},
+        {new BackstageTicket(BACKSTAGE_PASS_TICKET_ITEM_NAME).withSellInValue(15).withQuality(20), 14, 21},
+        {new BackstageTicket(BACKSTAGE_PASS_TICKET_ITEM_NAME).withSellInValue(10).withQuality(48), 9, 50},
+        {new BackstageTicket(BACKSTAGE_PASS_TICKET_ITEM_NAME).withSellInValue(5).withQuality(47), 4, 50},
 
         // Additional edge cases
-        {new Item("Backstage passes to a TAFKAL80ETC concert", 10, 50){}, 9, 50},
-        {new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49){}, 9, 50},
-        {new Item("Backstage passes to a TAFKAL80ETC concert", 11, 48){}, 10, 49},
-        {new Item("Backstage passes to a TAFKAL80ETC concert", 9, 48){}, 8, 50},
-        {new Item("Backstage passes to a TAFKAL80ETC concert", 6, 47){}, 5, 49},
-        {new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49){}, 4, 50},
-        {new Item("Backstage passes to a TAFKAL80ETC concert", 1, 80){}, 0, 80},
-        {new Item("Leather Armour", -1, 0){}, -2, 0},
-        {new Item("Leather Armour", -1, 2){}, -2, 0},
-        {new Item("Aged Brie", -1, 49){}, -2, 50},
+        {new BackstageTicket(BACKSTAGE_PASS_TICKET_ITEM_NAME).withSellInValue(10).withQuality(50), 9, 50},
+        {new BackstageTicket(BACKSTAGE_PASS_TICKET_ITEM_NAME).withSellInValue(10).withQuality(49), 9, 50},
+        {new BackstageTicket(BACKSTAGE_PASS_TICKET_ITEM_NAME).withSellInValue(11).withQuality(48), 10, 49},
+        {new BackstageTicket(BACKSTAGE_PASS_TICKET_ITEM_NAME).withSellInValue(9).withQuality(48), 8, 50},
+        {new BackstageTicket(BACKSTAGE_PASS_TICKET_ITEM_NAME).withSellInValue(6).withQuality(47), 5, 49},
+        {new BackstageTicket(BACKSTAGE_PASS_TICKET_ITEM_NAME).withSellInValue(5).withQuality(49), 4, 50},
+        {new BackstageTicket(BACKSTAGE_PASS_TICKET_ITEM_NAME).withSellInValue(1).withQuality(80), 0, 80},
+        {new NormalItem((RANDOM_NAME_3)).withSellInValue(-1).withQuality(0), -2, 0},
+        {new NormalItem((RANDOM_NAME_3)).withSellInValue(-1).withQuality(2), -2, 0},
+        {new AgedBrie(AGED_BRIE_NAME){}.withSellInValue(-1).withQuality(49), -2, 50},
 
     };
   }
